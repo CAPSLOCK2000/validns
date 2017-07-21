@@ -59,9 +59,8 @@ static struct binary_data caa_wirerdata(struct rr *rrv)
 }
 
 /*
- *  *rrv ? ik snap niet waar die variabele goed voor is.
+ *  todo: implement validate and look inside the record
 static void *caa_validate(struct rr *rrv)
-	todo: parse 
 	if ((strcmp(rr->property, "issue") == 0) \
 	||  (strcmp(rr->property, "issuewild") == 0) ) {
 
