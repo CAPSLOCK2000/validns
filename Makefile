@@ -27,7 +27,7 @@ validns: main.o carp.o mempool.o textparse.o base64.o base32hex.o \
 	dname.o tlsa.o nid.o l32.o l64.o lp.o \
 	ipseckey.o cbtree.o mb.o mg.o mr.o minfo.o \
 	afsdb.o x25.o isdn.o rt.o px.o kx.o \
-	dlv.o dhcid.o nsap.o
+	dlv.o dhcid.o nsap.o caa.o
 	$(CC) $(CFLAGS) $(OPTIMIZE) -o validns \
 	    main.o carp.o mempool.o textparse.o base64.o base32hex.o \
 	    rr.o soa.o a.o cname.o mx.o ns.o \
@@ -38,7 +38,7 @@ validns: main.o carp.o mempool.o textparse.o base64.o base32hex.o \
 	    dname.o tlsa.o nid.o l32.o l64.o lp.o \
 	    ipseckey.o cbtree.o mb.o mg.o mr.o minfo.o \
 	    afsdb.o x25.o isdn.o rt.o px.o kx.o \
-	    dlv.o dhcid.o nsap.o \
+	    dlv.o dhcid.o nsap.o caa.o \
 	    -L/usr/local/lib -L/opt/local/lib $(EXTRALPATH) \
 	    -lJudy -lcrypto $(EXTRALIBS) $(EXTRALINKING)
 
@@ -53,7 +53,7 @@ clean:
 	-rm -f nid.o l32.o l64.o lp.o ipseckey.o
 	-rm -f cbtree.o mb.o mg.o mr.o minfo.o
 	-rm -f afsdb.o x25.o isdn.o rt.o px.o kx.o
-	-rm -f dlv.o dhcid.o nsap.o
+	-rm -f dlv.o dhcid.o nsap.o caa.o
 	-rm -f validns.core core
 	@echo ':-)'
 
@@ -212,6 +212,9 @@ cbtree.o: cbtree.c cbtree.h
 
 threads.o: threads.c
 	$(CC) $(CFLAGS) $(OPTIMIZE) -c -o threads.o threads.c $(INCPATH)
+
+caa.o: caa.c
+	$(CC) $(CFLAGS) $(OPTIMIZE) -c -o caa.o caa.c $(INCPATH)
 
 test: validns
 	perl -MTest::Harness -e 'runtests("t/test.pl")'

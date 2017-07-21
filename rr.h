@@ -50,6 +50,7 @@
 #define T_L32	105
 #define T_L64	106
 #define T_LP	107
+#define T_CAA	257
 #define T_DLV   32769
 #define T_MAX	32769
 
@@ -566,6 +567,16 @@ struct rr_cert
 	struct binary_data certificate;
 };
 extern struct rr_methods cert_methods;
+
+struct rr_caa
+{
+	struct rr rr;
+	uint8_t flags;
+	char *property;
+	struct binary_data value;
+};
+extern struct rr_methods caa_methods;
+
 
 extern struct rr_nsec3 *first_nsec3;
 extern struct rr_nsec3 *latest_nsec3;

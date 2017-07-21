@@ -85,6 +85,22 @@ static char* rdtype2str_map[T_MAX+1] = {
 	"L32",
 	"L64",
 	"LP",
+	                     0, 0, 0, /* 110 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 120 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 130 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 140 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 150 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 160 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 170 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 180 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 190 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 210 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 220 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 230 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 240 */
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /* 250 */
+	0, 0, 0, 0, 0, 0,
+	"CAA",
 };
 struct cbtree zone_data = {NULL};
 char *zone_apex = NULL;
@@ -481,7 +497,9 @@ int str2rdtype(char *rdtype, int *is_generic)
 		}
 		break;
 	case 'c':
-		if (strcmp(rdtype, "cname") == 0) {
+		if (strcmp(rdtype, "caa") == 0) {
+			return T_CAA;
+		} else if (strcmp(rdtype, "cname") == 0) {
 			return T_CNAME;
 		} else if (strcmp(rdtype, "cert") == 0) {
 			return T_CERT;
